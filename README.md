@@ -1,7 +1,7 @@
 # dockertutorial
 Docker practice
 
-##Running Application
+## Running Application
 
 To run this applicaiton run the next command:
 
