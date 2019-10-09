@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+    rabbitmq-container:
+        image: rabbitmq:3-management
+        ports:
+            - "4369:4369"
+            - "5672:5672"
+            - "15672:15672"
+            - "55950:55950"
+        volumes:
+            - ./rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
+            - ./rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+    messagesender-container-1:
+        build:
+            context: messagesender/
+            dockerfile: ./src/main/resources/docker/Dockerfile
+        ports:
+            - 8085:8085
+        environment:
+            - SPRING_RABBITMQ_HOST=rabbitmq-container
+        depends_on:
+            - rabbitmq-container
+    messagereceiver-container-1:
+        build:
+            context: messagereceiver/
+            dockerfile: ./src/main/resources/docker/Dockerfile
+        ports:
+          - 8086:8086
+        environment:
+            - SPRING_RABBITMQ_HOST=rabbitmq-container
+        depends_on:
+          - rabbitmq-container
+          - messagesender-container-1

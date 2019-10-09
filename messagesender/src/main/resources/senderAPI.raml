@@ -1,0 +1,35 @@
+#%RAML 1.0
+title: Test RAML doc
+version: v1
+protocols: [ HTTP ]
+baseUri: http://messagesender-container-1:8088/api/{version}
+mediaType: application/json
+types:
+  properties:
+    msg:
+      required: true
+      type: string
+    smth:
+      required: true
+      type: string
+/send:
+  get:
+    description: Resend message with RabbitMQ
+    queryParameters:
+      msg: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: string
+            example: |
+              {"Sent: hello"}
+/save:
+  get:
+    description: Save message to DB
+    queryParameters:
+      smth: string
+    responses:
+      202:
+        body:
+          application/json:
