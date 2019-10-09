@@ -1,7 +1,6 @@
 package com.zapcorp.tutorial.messagesender;
 
 import lombok.AllArgsConstructor;
-import lombok.Setter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

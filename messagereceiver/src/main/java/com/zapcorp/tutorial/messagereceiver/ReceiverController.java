@@ -1,6 +1,5 @@
 package com.zapcorp.tutorial.messagereceiver;
 
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
