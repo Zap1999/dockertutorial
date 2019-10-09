@@ -7,12 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@Setter
 public class Sender {
 
-    @Autowired
     private RabbitTemplate template;
-    @Autowired
+
     private Queue queue;
 
     public void send(String message) {
@@ -22,6 +20,16 @@ public class Sender {
 
         this.template.convertAndSend(queue.getName(), message);
         System.out.println(" [x] Message sent. Message text: " + message);
+    }
+
+    @Autowired
+    public void setQueue(Queue queue) {
+        this.queue = queue;
+    }
+
+    @Autowired
+    public void setTemplate(RabbitTemplate template) {
+        this.template = template;
     }
 
 }
