@@ -1,7 +1,5 @@
 package com.zapcorp.tutorial.messagesender;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -21,12 +19,7 @@ public class Sender {
         if (message == null) {
             throw new IllegalArgumentException("Message to be sent cannot be a null value.");
         }
-        if (template == null) {
-            System.out.println("TEMPLATE");
-        }
-        if (queue == null) {
-            System.out.println("QUEUE");
-        }
+
         this.template.convertAndSend(queue.getName(), message);
         System.out.println(" [x] Message sent. Message text: " + message);
     }
