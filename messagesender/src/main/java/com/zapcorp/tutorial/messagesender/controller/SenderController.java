@@ -1,5 +1,6 @@
-package com.zapcorp.tutorial.messagesender;
+package com.zapcorp.tutorial.messagesender.controller;
 
+import com.zapcorp.tutorial.messagesender.service.Sender;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;

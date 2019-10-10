@@ -1,4 +1,4 @@
-package com.zapcorp.tutorial.messagesender;
+package com.zapcorp.tutorial.messagesender.service;
 
 import lombok.Setter;
 import org.springframework.amqp.core.Queue;
