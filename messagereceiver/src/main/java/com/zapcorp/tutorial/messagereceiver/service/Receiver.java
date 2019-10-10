@@ -1,4 +1,4 @@
-package com.zapcorp.tutorial.messagereceiver;
+package com.zapcorp.tutorial.messagereceiver.service;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

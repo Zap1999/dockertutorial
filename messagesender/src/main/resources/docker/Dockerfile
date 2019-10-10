@@ -10,7 +10,7 @@ VOLUME /tmp
 RUN apk update && apk add bash
 
 # Make port 8085 available to the world outside this container
-EXPOSE 8085 8088
+EXPOSE 8080
 
 # The application's jar file
 ARG JAR_FILE=./target/messagesender-0.0.1-SNAPSHOT.jar
