@@ -1,6 +1,6 @@
 package com.zapcorp.tutorial.messagereceiver.config;
 
-import com.zapcorp.tutorial.messagereceiver.service.Receiver;
+import com.zapcorp.tutorial.messagereceiver.service.impl.ReceiverServiceImpl;
 import org.apache.http.client.HttpClient;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -18,17 +18,17 @@ import org.springframework.web.client.RestTemplate;
 public class ReceiverConfig {
 
     @Bean
-    public Queue hello() {
-        return new Queue("hello");
+    public Queue testMessageQueue() {
+        return new Queue("testMessageQueue");
     }
 
     @Bean
-    public Receiver receiver() {
-        return new Receiver();
+    public ReceiverServiceImpl receiverService() {
+        return new ReceiverServiceImpl();
     }
 
     @Bean
-    public RestTemplate restTemplate() throws Exception {
+    public RestTemplate customRestTemplate() throws Exception {
         SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(
                 SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build(),
                 NoopHostnameVerifier.INSTANCE);
