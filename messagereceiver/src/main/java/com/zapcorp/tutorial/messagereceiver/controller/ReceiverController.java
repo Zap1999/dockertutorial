@@ -1,6 +1,6 @@
 package com.zapcorp.tutorial.messagereceiver.controller;
 
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,12 +10,11 @@ import java.util.Collections;
 
 
 @RestController
-@AllArgsConstructor
 public class ReceiverController {
 
     private RestTemplate restTemplate;
 
-    private static final String URI = "https://sender:8080/";
+    private String URI;
 
     @RequestMapping("reqMsg")
     public ResponseEntity<?> requestMessage() throws Exception {
@@ -33,6 +32,9 @@ public class ReceiverController {
                 String.class, Collections.emptyMap());
     }
 
-
+    public ReceiverController(@Value("${sender.URI}") String URI, RestTemplate restTemplate) {
+        this.URI = URI;
+        this.restTemplate = restTemplate;
+    }
 
 }
