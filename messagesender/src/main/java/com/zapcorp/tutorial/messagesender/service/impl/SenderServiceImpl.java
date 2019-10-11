@@ -14,8 +14,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class SenderServiceImpl implements SenderService {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(SenderServiceImpl.class);
-
     private RabbitTemplate template;
 
     private Queue queue;
@@ -27,7 +25,7 @@ public class SenderServiceImpl implements SenderService {
         }
 
         this.template.convertAndSend(queue.getName(), message);
-        LOGGER.info(" [x] Message sent. Message text: " + message);
+        log.info(" [x] Message sent. Message text: " + message);
     }
 
     @Autowired
