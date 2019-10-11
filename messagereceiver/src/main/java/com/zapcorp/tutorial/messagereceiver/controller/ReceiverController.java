@@ -12,9 +12,9 @@ import java.util.Collections;
 @RestController
 public class ReceiverController {
 
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
-    private String URI;
+    private final String URI;
 
 
     public ReceiverController(@Value("${sender.URI}") String URI, RestTemplate restTemplate) {
