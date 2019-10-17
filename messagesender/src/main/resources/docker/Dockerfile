@@ -15,8 +15,14 @@ EXPOSE 8080
 # The application's jar file
 ARG JAR_FILE=./target/messagesender-0.0.1-SNAPSHOT.jar
 
+ARG KEYSTORE=./src/main/resources/keystore/sender.p12
+ARG CERT=./src/main/resources/keystore/publicSenderCert.pem
+
 # Add the application's jar to the container
 ADD ${JAR_FILE} messagesender.jar
+
+ADD ${KEYSTORE} sender.p12
+ADD ${CERT} publicSenderCert.pem
 
 # Run the jar file
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar","/messagesender.jar"]

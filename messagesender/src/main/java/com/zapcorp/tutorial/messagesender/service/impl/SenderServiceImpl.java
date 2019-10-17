@@ -2,8 +2,6 @@ package com.zapcorp.tutorial.messagesender.service.impl;
 
 import com.zapcorp.tutorial.messagesender.service.SenderService;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +16,26 @@ public class SenderServiceImpl implements SenderService {
 
     private Queue queue;
 
+    private String lastSentMessage = null;
 
+    @Override
     public void send(String message) {
         if (message == null) {
             throw new IllegalArgumentException("Message to be sent cannot be a null value.");
         }
 
         this.template.convertAndSend(queue.getName(), message);
+        System.out.println("before message set: " + lastSentMessage);
+        lastSentMessage = message;
+        System.out.println("after message set: " + lastSentMessage);
+
         log.info(" [x] Message sent. Message text: " + message);
+    }
+
+    @Override
+    public String getLastMessage() {
+        System.out.println("returning last message: " + lastSentMessage);
+        return lastSentMessage;
     }
 
     @Autowired

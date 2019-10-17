@@ -1,6 +1,7 @@
 package com.zapcorp.tutorial.messagereceiver.config;
 
 import com.zapcorp.tutorial.messagereceiver.service.impl.ReceiverServiceImpl;
+import com.zapcorp.tutorial.messagereceiver.service.impl.SignatureServiceImpl;
 import org.apache.http.client.HttpClient;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -17,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class ReceiverConfig {
 
+
     @Bean
     public Queue testMessageQueue() {
         return new Queue("testMessageQueue");
@@ -25,6 +27,11 @@ public class ReceiverConfig {
     @Bean
     public ReceiverServiceImpl receiverService() {
         return new ReceiverServiceImpl();
+    }
+
+    @Bean
+    public SignatureServiceImpl signatureService() {
+        return new SignatureServiceImpl();
     }
 
     @Bean
