@@ -21,6 +21,7 @@ services:
             - 8080:8080
         environment:
             - SPRING_RABBITMQ_HOST=rabbitmq-container
+            - CATALINA_OPTS=-Xmx12g -Xms12g -XX:MaxPermSize=1024m
         depends_on:
             - rabbitmq-container
     receiver:
@@ -33,6 +34,7 @@ services:
           - 8082:8082
         environment:
             - SPRING_RABBITMQ_HOST=rabbitmq-container
+            - CATALINA_OPTS=-Xmx12g -Xms12g -XX:MaxPermSize=1024m
         depends_on:
           - rabbitmq-container
           - sender
