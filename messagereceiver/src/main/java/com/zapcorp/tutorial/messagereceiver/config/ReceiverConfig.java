@@ -25,16 +25,6 @@ public class ReceiverConfig {
     }
 
     @Bean
-    public ReceiverServiceImpl receiverService() {
-        return new ReceiverServiceImpl();
-    }
-
-    @Bean
-    public SignatureServiceImpl signatureService() {
-        return new SignatureServiceImpl();
-    }
-
-    @Bean
     public RestTemplate customRestTemplate() throws Exception {
         SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(
                 SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build(),
